@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUEIROZKKK | Minecraft</title>
+
+<style>
+:root {
+  --fundo: #090710;
+  --card: #171124;
+  --roxo: #9855ff;
+  --texto: #ffffff;
+  --cinza: #b7accb;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font: inherit; }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #100b1cee;
+  border-bottom: 1px solid #35234f;
+}
+.topo {
+  max-width: 1150px;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.logo { font-size: 21px; font-weight: bold; }
+.logo span { color: var(--roxo); }
+.ip {
+  background: var(--card);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+nav { display: flex; gap: 8px; flex-wrap: wrap; }
+nav a { color: var(--cinza); padding: 9px; }
+nav a:hover { color: var(--roxo); }
+.botao {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 15px;
+  color: white;
+  background: #292039;
+  display: inline-block;
+}
+.roxo { background: var(--roxo); }
+.discord { background: #5865f2; }
+main { max-width: 1150px; margin: auto; padding: 25px 15px 60px; }
+.pagina { display: none; }
+.pagina.ativa { display: block; }
+.hero {
+  padding: 65px 35px;
+  border: 1px solid #503075;
+  border-radius: 22px;
+  background: linear-gradient(120deg,#171024,#35175b);
+}
+.hero h1 { font-size: clamp(35px,7vw,65px); margin: 15px 0; }
+.hero h1 span { color: #bd91ff; }
+.hero p { color: #d4c9e5; line-height: 1.7; max-width: 600px; }
+.acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 25px; }
+.titulo { margin: 30px 0 15px; }
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 15px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid #352447;
+  border-radius: 15px;
+  padding: 20px;
+}
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--cinza); line-height: 1.6; font-size: 14px; }
+.icone { font-size: 30px; }
+.preco { font-size: 27px; font-weight: bold; margin: 18px 0; }
+.tag { color: #c8a7ff; font-size: 11px; font-weight: bold; }
+.card .botao { width: 100%; text-align: center; }
+.tabela { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+th,td { padding: 14px; border-bottom: 1px solid #352447; text-align: left; }
+th { color: #c8a7ff; }
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 7px 0 15px;
+  border-radius: 8px;
+  border: 1px solid #49345f;
+  background: #0d0915;
+  color: white;
+}
+.formulario { max-width: 450px; margin: 25px auto; }
+.aviso { color: var(--cinza); font-size: 13px; line-height: 1.6; }
+footer {
+  padding: 25px;
+  border-top: 1px solid #352447;
+  color: var(--cinza);
+  text-align: center;
+}
+@media(max-width:750px) {
+  .grade { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .topo { gap: 10px; }
+}
+@media(max-width:500px) {
+  .grade { grid-template-columns: 1fr; }
+  .hero { padding: 35px 20px; }
+  nav { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="topo">
+    <a class="logo" href="#inicio" onclick="abrir('inicio')">
+      ♛ QUEIROZ<span>KKK</span>
+    </a>
+
+    <div class="ip">
+      🟢 IP: <strong id="ip">sd-br4.blazebr.com:28695</strong>
+      <button class="botao" onclick="copiarIP()">Copiar</button>
+    </div>
+
+    <a class="botao discord"
+       href="https://discord.gg/XrhgEWegHk"
+       target="_blank">Discord ↗️</a>
+
+    <nav>
+      <a href="#inicio" onclick="abrir('inicio')">Início</a>
+      <a href="#top" onclick="abrir('top')">🏆 Top jogadores</a>
+      <a href="#loja" onclick="abrir('loja')">🛒 Loja</a>
+      <a href="#perfil" onclick="abrir('perfil')">👤 Perfil</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- INÍCIO -->
+  <section id="inicio" class="pagina ativa">
+    <div class="hero">
+      <div class="tag">MINECRAFT • COMUNIDADE • PVP</div>
+      <h1>DOMINE O<br><span>MUNDO PIXEL.</span></h1>
+      <p>
+        Entre no QUEIROZKKK, jogue com seus amigos,
+        conquiste seu lugar no ranking e confira os
+        produtos disponíveis na nossa loja.
+      </p>
+
+      <div class="acoes">
+        <button class="botao roxo" onclick="abrir('top')">
+          🏆 Ver ranking
+        </button>
+        <button class="botao" onclick="abrir('loja')">
+          🛒 Abrir loja
+        </button>
+        <a class="botao discord"
+           href="https://discord.gg/XrhgEWegHk"
+           target="_blank">Entrar no Discord</a>
+      </div>
+    </div>
+
+    <h2 class="titulo">Explore o servidor</h2>
+    <div class="grade">
+      <div class="card">
+        <div class="icone">🏆</div>
+        <h3>Top jogadores</h3>
+        <p>Confira os jogadores mais bem colocados do servidor.</p>
+        <button class="botao" onclick="abrir('top')">Ver ranking</button>
+      </div>
+
+      <div class="card">
+        <div class="icone">💎</div>
+        <h3>Loja oficial</h3>
+        <p>Veja os produtos, VIPs e preços disponíveis.</p>
+        <button class="botao" onclick="abrir('loja')">Ver produtos</button>
+      </div>
+
+      <div class="card">
+        <div class="icone">👤</div>
+        <h3>Minha conta</h3>
+        <p>Acesse a área de perfil do jogador.</p>
+        <button class="botao" onclick="abrir('perfil')">Meu perfil</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP JOGADORES -->
+  <section id="top" class="pagina">
+    <h1>🏆 Top jogadores</h1>
+    <p class="aviso">Ranking da comunidade QUEIROZKKK.</p>
+
+    <div class="tabela">
+      <table>
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Jogador</th>
+            <th>Pontos</th>
+          </tr>
+        </thead>
+        <!-- Estes 3 jogadores aparecem se o banco não estiver conectado -->
+        <tbody id="jogadores">
+          <tr><td>#1</td><td>queirozkkk</td><td>1000</td></tr>
+          <tr><td>#2</td><td>luisszxz17</td><td>800</td></tr>
+          <tr><td>#3</td><td>rafinha_gelo</td><td>600</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="aviso" id="avisoRanking">Os pontos acima são exemplos e podem ser alterados.</p>
+  </section>
+
+  <!-- LOJA -->
+  <section id="loja" class="pagina">
+    <h1>🛒 Loja oficial</h1>
+    <p class="aviso">Confira os produtos disponíveis no servidor.</p>
+
+    <!-- Estes 3 produtos aparecem se o banco não estiver conectado -->
+    <div class="grade" id="produtos">
+      <div class="card">
+        <div class="icone">💎</div>
+        <span class="tag">VIP</span>
+        <h3>VIP SUPREMO</h3>
+        <p>Benefícios especiais para sua aventura no servidor.</p>
+        <div class="preco">R$ 5,00</div>
+        <button class="botao roxo" onclick="interesse('VIP SUPREMO')">
+          Tenho interesse
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icone">⚔️</div>
+        <span class="tag">ITEM</span>
+        <h3>MACE</h3>
+        <p>Item disponível para os jogadores do servidor.</p>
+        <div class="preco">R$ 4,00</div>
+        <button class="botao roxo" onclick="interesse('MACE')">
+          Tenho interesse
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icone">👑</div>
+        <span class="tag">VIP</span>
+        <h3>VIP DIAMANTE</h3>
+        <p>Um produto especial para a comunidade.</p>
+        <div class="preco">R$ 10,00</div>
+        <button class="botao roxo" onclick="interesse('VIP DIAMANTE')">
+          Tenho interesse
+        </button>
+      </div>
+    </div>
+
+    <p class="aviso">
+      Os botões demonstram interesse e não realizam pagamentos.
+      Confirme os preços e as vantagens antes de vender os produtos.
+    </p>
+  </section>
+
+  <!-- PERFIL -->
+  <section id="perfil" class="pagina">
+    <div class="formulario card">
+      <h1>👤 Minha conta</h1>
+      <p>Área do jogador QUEIROZKKK.</p>
+
+      <!-- Tela de login / cadastro -->
+      <div id="telaLogin">
+        <label for="nick">Nick do Minecraft (só para criar conta)</label>
+        <input id="nick" placeholder="Digite seu nick" maxlength="16" autocomplete="username">
+
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="seu@email.com" autocomplete="email">
+
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" placeholder="Mínimo de 6 caracteres" autocomplete="current-password">
+
+        <div class="acoes">
+          <button class="botao roxo" onclick="entrar()">Entrar</button>
+          <button class="botao" onclick="criarConta()">Criar conta</button>
+        </div>
+      </div>
+
+      <!-- Tela da conta (aparece depois de entrar) -->
+      <div id="telaConta" hidden>
+        <p>Logado como <strong id="contaNick"></strong></p>
+        <p class="aviso" id="contaEmail"></p>
+        <button class="botao" onclick="sair()">Sair</button>
+      </div>
+
+      <p id="mensagem" class="aviso"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>♛ QUEIROZKKK</strong>
+  <p>Servidor Minecraft da comunidade.</p>
+  <a href="https://discord.gg/XrhgEWegHk" target="_blank">
+    Discord da comunidade ↗️
+  </a>
+</footer>
+
+<!-- Biblioteca do Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+// =====================================================
+// CONEXÃO COM O SUPABASE
+// Troque os dois valores abaixo (Project Settings → API)
+// Use SOMENTE a chave anon/publishable, nunca a service_role
+// =====================================================
+const SUPABASE_URL = 'https://tomntcaxjqvcnjrxxkmb.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Y2rEBzPXEgCSCx5B9AEa9g_9jT-jezh';
+
+const db = (window.supabase && SUPABASE_URL.indexOf('https://') === 0)
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
+
+// ---------- RANKING (lê a view "ranking") ----------
+async function carregarRanking() {
+  if (!db) return;
+
+  const { data, error } = await db
+    .from('ranking')
+    .select('posicao, nick, pontos')
+    .order('posicao', { ascending: true })
+    .limit(10);
+
+  if (error || !data || data.length === 0) {
+    console.error('Erro ao carregar ranking:', error);
+    return;
+  }
+
+  const corpo = document.getElementById('jogadores');
+  corpo.innerHTML = '';
+
+  data.forEach(function(j) {
+    const tr = document.createElement('tr');
+    [ '#' + j.posicao, j.nick, j.pontos ].forEach(function(valor) {
+      const td = document.createElement('td');
+      td.textContent = valor;
+      tr.appendChild(td);
+    });
+    corpo.appendChild(tr);
+  });
+
+  document.getElementById('avisoRanking').textContent =
+    'Ranking atualizado automaticamente.';
+}
+
+// ---------- LOJA (lê a view "loja") ----------
+async function carregarLoja() {
+  if (!db) return;
+
+  const { data, error } = await db
+    .from('loja')
+    .select('id, nome, tipo, descricao, icone, preco');
+
+  if (error || !data || data.length === 0) {
+    console.error('Erro ao carregar loja:', error);
+    return;
+  }
+
+  const grade = document.getElementById('produtos');
+  grade.innerHTML = '';
+
+  data.forEach(function(p) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const icone = document.createElement('div');
+    icone.className = 'icone';
+    icone.textContent = p.icone || '🛒';
+
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = p.tipo;
+
+    const titulo = document.createElement('h3');
+    titulo.textContent = p.nome;
+
+    const desc = document.createElement('p');
+    desc.textContent = p.descricao || '';
+
+    const preco = document.createElement('div');
+    preco.className = 'preco';
+    preco.textContent = Number(p.preco).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+
+    const botao = document.createElement('button');
+    botao.className = 'botao roxo';
+    botao.textContent = 'Tenho interesse';
+    botao.addEventListener('click', function() { interesse(p.nome); });
+
+    card.append(icone, tag, titulo, desc, preco, botao);
+    grade.appendChild(card);
+  });
+}
+
+// =====================================================
+// FUNÇÕES DO SITE
+// =====================================================
+function abrir(nome) {
+  document.querySelectorAll('.pagina').forEach(function(pagina) {
+    pagina.classList.remove('ativa');
+  });
+
+  const destino = document.getElementById(nome);
+  if (destino) destino.classList.add('ativa');
+
+  location.hash = nome;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function copiarIP() {
+  const ip = document.getElementById('ip').textContent.trim();
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(ip).then(function() {
+      alert('IP copiado: ' + ip);
+    }).catch(function() {
+      prompt('Copie o IP do servidor:', ip);
+    });
+  } else {
+    prompt('Copie o IP do servidor:', ip);
+  }
+}
+
+function interesse(produto) {
+  const mensagem = 'Olá! Tenho interesse no produto ' + produto +
+    ' do servidor QUEIROZKKK.';
+  alert(mensagem + '\nEntre no Discord do servidor para combinar a compra.');
+  window.open('https://discord.gg/XrhgEWegHk', '_blank');
+}
+
+// =====================================================
+// LOGIN E CONTA (Supabase Auth)
+// A senha vai direto para o Supabase e nunca fica guardada no site
+// =====================================================
+function mostrarMensagem(texto) {
+  document.getElementById('mensagem').textContent = texto;
+}
+
+async function criarConta() {
+  if (!db) return mostrarMensagem('Banco não conectado. Preencha a URL e a chave do Supabase.');
+
+  const nick = document.getElementById('nick').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const senha = document.getElementById('senha').value;
+
+  if (!/^[A-Za-z0-9_]{3,16}$/.test(nick)) {
+    return mostrarMensagem('O nick deve ter de 3 a 16 caracteres: letras, números ou _.');
+  }
+  if (!email) return mostrarMensagem('Digite o e-mail.');
+  if (senha.length < 6) return mostrarMensagem('A senha precisa ter pelo menos 6 caracteres.');
+
+  mostrarMensagem('Criando conta...');
+  const { data, error } = await db.auth.signUp({
+    email: email,
+    password: senha,
+    options: { data: { nick: nick } }
+  });
+
+  if (error) return mostrarMensagem('Erro ao criar conta: ' + error.message);
+
+  if (data.session) {
+    mostrarMensagem('Conta criada com sucesso!');
+  } else {
+    mostrarMensagem('Conta criada! Confirme o link enviado para o seu e-mail e depois clique em Entrar.');
+  }
+}
+
+async function entrar() {
+  if (!db) return mostrarMensagem('Banco não conectado. Preencha a URL e a chave do Supabase.');
+
+  const email = document.getElementById('email').value.trim();
+  const senha = document.getElementById('senha').value;
+
+  if (!email || !senha) return mostrarMensagem('Digite o e-mail e a senha.');
+
+  mostrarMensagem('Entrando...');
+  const { error } = await db.auth.signInWithPassword({ email: email, password: senha });
+
+  if (error) return mostrarMensagem('Não foi possível entrar: ' + error.message);
+  mostrarMensagem('');
+}
+
+async function sair() {
+  if (db) await db.auth.signOut();
+  mostrarMensagem('Você saiu da conta.');
+}
+
+// Cria o perfil na tabela "perfis" no primeiro login
+async function garantirPerfil(user) {
+  const { data: perfil } = await db
+    .from('perfis')
+    .select('nick, email')
+    .eq('id', user.id)
+    .maybeSingle();
+
+  if (perfil) return perfil;
+
+  const nick = user.user_metadata && user.user_metadata.nick;
+  if (!nick) return { nick: user.email, email: user.email };
+
+  const novo = { id: user.id, nick: nick, email: user.email };
+  const { error } = await db.from('perfis').insert(novo);
+
+  if (error) {
+    mostrarMensagem('Não foi possível salvar o perfil (o nick pode já estar em uso).');
+    return { nick: user.email, email: user.email };
+  }
+  return novo;
+}
+
+async function atualizarTelaConta(session) {
+  const telaLogin = document.getElementById('telaLogin');
+  const telaConta = document.getElementById('telaConta');
+
+  if (session && session.user) {
+    const perfil = await garantirPerfil(session.user);
+    document.getElementById('contaNick').textContent = perfil.nick;
+    document.getElementById('contaEmail').textContent = perfil.email;
+    document.getElementById('senha').value = '';
+    telaLogin.hidden = true;
+    telaConta.hidden = false;
+  } else {
+    telaLogin.hidden = false;
+    telaConta.hidden = true;
+  }
+}
+
+function iniciarLogin() {
+  if (!db) return;
+  db.auth.onAuthStateChange(function(evento, session) {
+    // setTimeout evita travar o Supabase ao fazer outras chamadas aqui dentro
+    setTimeout(function() { atualizarTelaConta(session); }, 0);
+  });
+}
+
+// Carrega os dados do banco ao abrir o site
+carregarRanking();
+carregarLoja();
+iniciarLogin();
+</script>
+</body>
+</html>
